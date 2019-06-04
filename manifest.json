@@ -1,0 +1,12 @@
+{
+  "domain": "mind",
+  "name": "MIND Mobility",
+  "documentation": "https://github.com/bramkragten/mind",
+  "requirements": [
+    "https://github.com/bramkragten/python-mind/archive/master.zip#python-mind==0.0.5"
+  ],
+  "dependencies": [],
+  "codeowners": [
+    "@bramkragten"
+  ]
+}

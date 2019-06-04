@@ -1,0 +1,6 @@
+update_location:
+  description: Updates the location of all vehicles in the account.
+  fields:
+    entity_id:
+      description: Entity ID to update.
+      example: device_tracker.pl382h
