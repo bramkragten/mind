@@ -16,7 +16,16 @@ SENSOR_TYPES = {
     'mileage': ['Mileage', LENGTH_KILOMETERS, 'mdi:counter'],
     'mileage_left': ['Mileage Left', LENGTH_KILOMETERS, 'mdi:fuel'],
     'fuel_left': ['Fuel Left', VOLUME_LITERS, 'mdi:fuel'],
-    'battery': ['Battery', 'V', 'mdi:car-battery']
+    'battery': ['Battery', 'V', 'mdi:car-battery'],
+    'maintenancedate': ['Maintenance Date','','mdi:counter'],
+    'servicedate': ['Service Date','','mdi:counter'],
+    'daysuntilmaintenance': ['Days Until Maintenance','','mdi:counter'],
+    'daysuntilservice': ['Days Until Service','','mdi:counter'],
+    'enginefueltype': ['Engine Fueltype','','mdi:counter'],
+    'licenseplate': ['License Plate','','mdi:counter'],
+    'brand': ['Brand','','mdi:counter'],
+    'model': ['Model','','mdi:counter'],
+    'edition': ['Edition','','mdi:counter'],
 }
 
 
@@ -31,6 +40,15 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
         devs.append(MindSensor(vehicle.license_plate, 'mileage_left', vehicle))
         devs.append(MindSensor(vehicle.license_plate, 'fuel_left', vehicle))
         devs.append(MindSensor(vehicle.license_plate, 'battery', vehicle))
+        devs.append(MindSensor(vehicle.license_plate, 'maintenancedate', vehicle))
+        devs.append(MindSensor(vehicle.license_plate, 'servicedate', vehicle))
+        devs.append(MindSensor(vehicle.license_plate, 'daysuntilmaintenance', vehicle))
+        devs.append(MindSensor(vehicle.license_plate, 'daysuntilservice', vehicle))
+        devs.append(MindSensor(vehicle.license_plate, 'enginefueltype', vehicle))
+        devs.append(MindSensor(vehicle.license_plate, 'licenseplate', vehicle))
+        devs.append(MindSensor(vehicle.license_plate, 'model', vehicle))
+        devs.append(MindSensor(vehicle.license_plate, 'brand', vehicle))
+        devs.append(MindSensor(vehicle.license_plate, 'edition', vehicle))
 
     add_devices(devs, True)
 
@@ -75,7 +93,25 @@ class MindSensor(Entity):
         elif self._type == 'fuel_left':
             self._state = self._vehicle.fuellevel
         elif self._type == 'battery':
-            self._state = self._vehicle.batteryVoltage
+            self._state = round(self._vehicle.batteryVoltage,2)
+        elif self._type == 'maintenancedate':
+            self._state = self._vehicle.maintenanceDate
+        elif self._type == 'servicedate':
+            self._state = self._vehicle.serviceDate
+        elif self._type == 'daysuntilmaintenance':
+            self._state = self._vehicle.remainingDaysUntilMaintenance
+        elif self._type == 'daysuntilservice':
+            self._state = self._vehicle.remainingDaysUntilService
+        elif self._type == 'enginefueltype':
+            self._state = self._vehicle.engineFuelType
+        elif self._type == 'licenseplate':
+            self._state = self._vehicle.license_plate
+        elif self._type == 'brand':
+            self._state = self._vehicle.brand
+        elif self._type == 'model':
+            self._state = self._vehicle.model
+        elif self._type == 'edition':
+            self._state = self._vehicle.edition
         else:
             self._state = None
             _LOGGER.warning("Could not retrieve state from %s", self.name)
