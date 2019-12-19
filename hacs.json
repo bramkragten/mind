@@ -1,6 +1,6 @@
 {
   "name": "MIND Mobility",
   "country": "NL",
-  "render_readme": false,
+  "render_readme": true,
   "domains": ["sensor","binary_sensor","device_tracker"]
 }
