@@ -24,4 +24,10 @@ mind:
   # Seat:
   client_id: 8ba04cb3869f4b568ea54fc57154d957
   client_secret: b7fD6c394a7c4aFd998afA70Cb5fED86
+  # Volkswagen Bedrijfswagen:
+  client_id: 4016d1e9c62141208dedfee2f95114d0
+  client_secret: C2f1FEffaB944cd8Aa34aEa3F4c7D98A
+  # Audi:
+  client_id: 7af00aec25e041a7a458f93803b96f67
+  client_secret: D837b68f8BA74373bCFE09e66207a82d
 ```
