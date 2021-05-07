@@ -6,7 +6,7 @@ import logging
 
 from custom_components.mind import DATA_MIND
 from homeassistant.components.binary_sensor import (
-    BinarySensorDevice, PLATFORM_SCHEMA)
+    BinarySensorEntity, PLATFORM_SCHEMA)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -33,7 +33,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
     add_devices(devs, True)
 
 
-class MindBinarySensor(BinarySensorDevice):
+class MindBinarySensor(BinarySensorEntity):
     """A Mind binary sensor."""
 
     def __init__(self, name, sensor_type, mind, vehicle):
